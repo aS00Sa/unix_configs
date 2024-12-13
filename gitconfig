@@ -7,8 +7,10 @@
     lg = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(green)%d%Creset %s %C(red)(%cr) %C(yellow)<%an>%Creset'
     shows = show --stat
 [user]
-    email = olshevskiy87@bk.ru
-    name = Dmitriy Olshevskiy
+#    email = olshevskiy87@bk.ru
+#    name = Dmitriy Olshevskiy
+        name = Саглаев Александр
+        email = saglaev.aa@betcity.ru
 [push]
     default = current
 [color]
