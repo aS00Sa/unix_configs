@@ -63,3 +63,16 @@ fi
 if [ -f "$HOME/.custom_aliases.sh" ]; then
     source "$HOME/.custom_aliases.sh"
 fi
+# history HISTTIMEFORMAT="%h %d %H:%M:%S "
+HISTSIZE=10000
+export HISTSIZE=10000
+HISTTIMEFORMAT="%h %d %H:%M:%S "
+export HISTTIMEFORMAT="%h %d %H:%M:%S "
+PROMPT_COMMAND='history -a'
+export HISTIGNORE="ls:ll:history:w:htop"
+
+# User specific aliases and functions
+alias dockerps='docker ps  -a --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
+alias dockerports='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}"'
+alias dockerip='docker inspect --format "{{range .NetworkSettings.Networks}}{{.IPAddress}}            {{.Aliases}}   {{end}}" $(docker ps  -a -q)'
+
