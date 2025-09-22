@@ -1,7 +1,7 @@
 # remap prefix to Control + j
-set -g prefix C-a
+set -g prefix C-j
 unbind C-b
-bind C-a send-prefix
+bind C-j send-prefix
 
 bind C-x setw synchronize-panes
 bind E command-prompt -p "Command:" \
