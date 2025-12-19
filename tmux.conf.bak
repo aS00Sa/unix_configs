@@ -31,6 +31,15 @@ bind m command-prompt -p man:   "split-window -h 'man %1'"
 # source this file after changes
 bind R source-file ~/.tmux.conf
 
+set-environment -g 'IGNOREEOF' 1
+
+#set-option -g default-terminal "xterm"
+set -g default-terminal screen-256color
+set-option -g allow-rename off
+set-option -g set-titles on
+set-option -g default-shell "/bin/bash"
+set-option -g repeat-time 0
+
 # enable for iTerm (Terminal.app doesn't have mouse support)
 set -g mouse on
 
@@ -40,6 +49,14 @@ set -s escape-time 50
 
 # start numbering windows from 1 instead of zero
 set -g base-index 1
+set -g renumber-windows on
+
+#set -g status-attr bright
+set -g status-fg white
+set -g status-bg black
+set -g status-right '#[fg=green][ %d.%m.%Y %H:%M:%S ]#[default]'
+setw -g window-status-current-format '#[fg=yellow]( #I:#W#F )#[default]'
+setw -g window-status-format '#I:#W'
 
 # syntax highlighting in Vim
 set -g default-terminal "xterm-256color"
