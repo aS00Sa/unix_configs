@@ -1,0 +1,37 @@
+# remap prefix to Control + j
+set -g prefix C-j
+unbind C-b
+bind C-j send-prefix
+
+bind C-x setw synchronize-panes
+bind E command-prompt -p "Command:" \
+   "run \"tmux list-panes -a -F '##{session_name}:##{window_index}.##{pane_index}' \
+   | xargs -I PANE tmux send-keys -t PANE '%1' Enter\""
+
+set-environment -g 'IGNOREEOF' 1
+
+set -g default-terminal screen-256color
+set-option -g allow-rename off
+set-option -g set-titles on
+set-option -g default-shell "/bin/bash"
+set-option -g repeat-time 0
+set -g base-index 1
+set -g renumber-windows on
+
+#set -g status-attr bright
+set -g status-fg white
+set -g status-bg black
+set -g status-right '#[fg=green][ %d.%m.%Y %H:%M:%S ]#[default]'
+setw -g window-status-current-format '#[fg=yellow]( #I:#W#F )#[default]'
+setw -g window-status-format '#I:#W'
+
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-pain-control'
+set -g @plugin 'tmux-plugins/tmux-logging'
+
+if "test ! -d ~/.tmux/plugins/tpm" \
+    "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm'"
+
+run '~/.tmux/plugins/tpm/tpm'
